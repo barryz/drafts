@@ -9,7 +9,7 @@
 
 - 松耦合
     Federation插件能够在不同的broker(cluster)之间传递消息。
-        可以拥有不同的用户和虚拟主机
+        可以拥有不同的用户和虚拟主机,
         可以运行不同的RabbitMQ、Erlang版本
 - 广域网支持
     Fderation插件使用AMQP 0-9-1协议进行多broker通信，并支持断点重连。
