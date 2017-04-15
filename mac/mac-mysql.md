@@ -17,3 +17,11 @@ $sudo launchctl unload -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.pli
 
 **maybe need you offer the root password.**
 
+---
+
+### 修改root原始密码:
+
+```bash
+>SET PASSWORD FOR 'root'@'localhost' = PASSWORD("root");
+```
+
