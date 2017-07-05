@@ -394,6 +394,50 @@ $git clone https://github.com/path/to/yourrepo
 
 ---
 
+# merge和rebase的区别
+
+### git pull
+
+git pull 是　git fetch + git merge FETCH_HEAD 的缩写。所以，默认情况下，git pull就是先fetch，然后执行merge 操作，如果加–rebase 参数，就是使用git rebase 代替git merge。
+
+### merge 和 rebase
+
+merge 是合并的意思，rebase是复位基底的意思。
+
+现在我们有这样的两个分支,test和master，提交如下：
+
+```bash
+      D---E test
+     /
+A---B---C---F master
+```
+
+在master执行git merge test,然后会得到如下结果：
+
+```bash
+      D--------E
+     /          \
+A---B---C---F----G   test, master
+```
+
+在master执行git rebase test，然后得到如下结果：
+
+```bash
+A---B---D---E---C'---F'   test, master
+```
+
+可以看到，merge操作会生成一个新的节点，之前的提交分开显示。而rebase操作不会生成新的节点，是将两个分支融合成一个线性的提交。
+
+### 总结
+
+通过上面可以看到，想要更好的提交树，使用rebase操作会更好一点。这样可以线性的看到每一次提交，并且没有增加提交节点。
+
+在我们操作过程中。merge 操作遇到冲突的时候，当前merge不能继续进行下去。手动修改冲突内容后，add 修改，commit 就可以了。
+
+而rebase 操作的话，会中断rebase,同时会提示去解决冲突。解决冲突后,将修改add后执行git rebase –continue继续操作，或者git rebase –skip忽略冲突。
+
+---
+
 # 定制化 git 全局配置
 
 取自：[SRE 团队 git 配置参考](https://github.com/eleme/sre/blob/master/git.md)
@@ -634,6 +678,7 @@ being redirected to the login form.
 
 - [moooofly blog](https://github.com/moooofly/MarkSomethingDown/blob/master/nonsense/git%20%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF.md)
 - [livoras blog](https://github.com/livoras/blog/issues/7)
+- [码农明明桑]http://blog.isming.me/2014/09/26/git-rebase-merge/)
 
 ## 参考
 
