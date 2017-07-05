@@ -1,6 +1,4 @@
 
-> 引用自 [这里](https://github.com/moooofly/MarkSomethingDown/blob/master/nonsense/git%20%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF.md)
-
 # Git图示
 
 ![Git Cheet Sheet](https://raw.githubusercontent.com/moooofly/ImageCache/master/Pictures/Git%20Cheat%20Sheet.jpg "Git Cheet Sheet")
@@ -9,108 +7,17 @@
 
 ----------
 
-# git tag 操作
+# Git Tips
 
-- 显示已有标签
+**墙裂不建议 `git push` 的时候使用 `-f` 强制推送！！！**
 
-```shell
-git tag
-```
-
-- 基于搜索模式列出符合条件的标签
-
-```shell
-git tag -l '<pattern>'
-```
-
-> 模式为正则表达式；
-
-- 新建标签
-
-    > Git 使用的标签有两种类型：**轻量级的（lightweight）**和**含附注的（annotated）**；
-
-    - 新建**含附注的标签**
-
-        ```shell
-        git tag -a <tag_name> -m "your comment"
-        ```
-
-    - 新建**基于 GPG 签署的标签**
-
-        ```shell
-        git tag -s <tag_name> -m "your comment"
-        ```
-
-        > 签署的目的是为了进行后续验证，防止篡改；
-
-    - 新建**轻量级标签**
-
-        ```shell
-        git tag <tag_name>
-        ```
-
-- 查看标签相关信息
-
-```shell
-git show <tag_name>
-```
-
-- 基于 GPG 验证已经签署的标签
-
-```shell
-git tag -v <tag-name>
-```
-
-> 需要有签署者的公钥，存放在 keyring 中（即导入），才能验证；
-
-- 后期（补）加注标签
-
-```shell
-git log --pretty=oneline           # 查看提交历史，确定某次提交的哈希值
-git tag -a <tag_name> <hashValue>  # 可以只给出哈希值的前几位
-```
-
-- 将标签推送到远端仓库
-
-    > 默认情况下，`git push` 并不会将标签推送到远端仓库；必须显式指定才行；
-
-    - 推送指定标签
-
-        ```shell
-        git push origin <tag_name>
-        ```
-
-    - 推送所有标签
-
-        ```shell
-        git push origin --tags
-        ```
-
-- 删除远端标签
-
-```shell
-git push origin --delete tag <tag_name>
-git tag -d <tag_name>
-git push origin :refs/tags/<tag_name>
-```
-
-- 获取远端标签
-
-```shell
-git fetch origin tag <tag_name>
-```
-
-> 尚未理解该命令的作用
-
-
-# git clone 时直接 rename
+### git clone 时直接 rename
 
 ```shell
 git clone git@github.com:moooofly/aaa.git bbb
 ```
 
-
-# 基于本地项目创建 github repo
+### 基于本地项目创建 github repo
 
 ```shell
 cd /path/to/project/dir/
@@ -120,6 +27,29 @@ git commit -m "first commit"
 git remote add origin git@github.com:moooofly/your_project_name.git
 (git pull origin master)
 git push -u origin master
+```
+
+### 修改最近一次commit message
+
+```bash
+git commit --amend
+```
+
+### 新建本地分支并切换至该分支
+
+```bash
+git checkout -b your_branch
+
+相当于:
+
+git branch your_branch
+git checkout your_branch
+```
+
+### 添加远程仓库
+
+```bash
+git remote add $repo_name $repo_addr
 ```
 
 > 注1：在执行 `git remote add xxx` 前，需要先在 github 上创建一个名为 your_project_name 的 repo ；
@@ -132,8 +62,31 @@ git push -u origin master
 >
 > 注5：上面执行 `git pull origin master` 时可能会报 "fatal: refusing to merge unrelated histories" 错误，此时可以使用 `--allow-unrelated-histories` 选项解决，即 `git pull origin master --allow-unrelated-histories` ；详情参见[这里](https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories/40107973#40107973?newreg=5095f8141c34479ba419f5e8b2d1b415)；
 
+### 回退当前repo到指定commit
 
-# 本地新建分支后 push 到 github repo
+```bash
+git reset --hard $commit_id
+```
+
+### 回退当前repo到上次提交commit
+
+```bash
+git reset --hard HEAD^
+```
+
+### diff当前commit与指定commit
+
+```bash
+git diff $commit_id
+```
+
+### diff当前commit与上次提交
+
+```bash
+git diff HEAD^
+```
+
+### 本地新建分支后 push 到 github repo
 
 创建并切换分支（新分支内容为源分支内容的拷贝）
 
@@ -158,7 +111,7 @@ git branch --set-upstream-to=origin/new_branch new_branch
 ```
 
 
-# 将远端 github repo 里的指定分支拉取到本地（本地不存在的分支）
+### 将远端 github repo 里的指定分支拉取到本地（本地不存在的分支）
 
 当想要从远端仓库里拉取一条本地不存在的分支时，可以执行
 
@@ -188,7 +141,7 @@ git checkout -b local_branch_name origin/remote_branch_name
 ```
 
 
-# 重命名 github repo 中的远程分支名
+### 重命名 github repo 中的远程分支名
 
 当在本地执行过如下命令后，你将会创建一个本地分支 old_branch 并且关联到远程的 old_branch 分支上；
 
@@ -250,7 +203,7 @@ git push -u
 > ```
 
 
-# 删除不存在对应远程分支的本地分支
+### 删除不存在对应远程分支的本地分支
 
 一种情况：提交 PR 后，远端 master 分支在 PR 合并完成后，一般会直接删除对应的 PR 分支，而提交 PR 的人在本地会看到如下提示信息；
 
@@ -321,7 +274,7 @@ Deleted branch revert (was be9b8d1).
 ```
 
 
-# fork 别人项目后如何同步其后续更新
+### fork 别人项目后如何同步其后续更新
 
 先从自己的 github 中 clone 一份内容
 ```shell
@@ -356,7 +309,90 @@ git push origin master
 > 上述命令最好写完整，否则容易引起混乱或歧义；
 
 
-----------
+---
+
+# Github WorkFlow （base fork)
+
+### 1. 构建源码仓库
+
+这一步通常由项目发起人来操作，我们这里把管理员设为PingHackers，假设PingHackers已经为我们建立起了一个源仓库PingHackers/git-demo，并且已经初始化了两个永久性分支master和develop，如图：
+
+![PingHackers](https://raw.githubusercontent.com/livoras/blog-images/master/git/git-demo-branch.png)
+
+### 2. 开发者fork仓库
+
+源仓库建立以后，每个开发就可以去复制一份源仓库到自己的github账号中，然后作为自己开发所用的仓库。假设我是一个项目中的开发者，我就到PingHackers/git-demo项目主页上去fork：
+
+![PingHackers_fork](https://raw.githubusercontent.com/livoras/blog-images/master/git/git-demo-fork-origin.png)
+
+### 3. 把自己开发者仓库clone到本地
+
+```bash
+$git clone https://github.com/path/to/yourrepo
+```
+
+### 4. 构建功能分支进行开发
+
+进入仓库中，按照前面说所的构建功能分支的步骤，构建功能分支进行开发、合并，假设我现在要开发一个“讨论”功能：
+
+```bash
+>>> git checkout develop
+    # 切换到`develop`分支
+
+    >>> git checkout -b feature-discuss
+    # 分出一个功能性分支
+
+    >> touch discuss.js
+    # 假装discuss.js就是我们要开发的功能
+
+    >> git add .
+    >> git commit -m 'finish discuss feature'
+    # 提交更改
+
+    >>> git checkout develop
+    # 回到develop分支
+
+    >>> git merge --no-ff feature-discuss
+    # 把做好的功能合并到develop中
+
+    >>> git branch -d feature-discuss
+    # 删除功能性分支
+
+    >>> git push origin develop
+    # 把develop提交到自己的远程仓库中
+
+    若远程分支中不存在develop分支， 则需要新建远程develop分支
+    >>> git push origin develop:develop
+```
+
+这时候，你上自己github的项目主页中develop分支中看看，已经有discuss.js这个文件了：
+
+![PingHackers_push](https://raw.githubusercontent.com/livoras/blog-images/master/git/git-demo-push.png)
+
+### 5. 向管理员提交pull request
+
+假设我完成了“讨论”功能（当然，你还可能对自己的develop进行了多次合并，完成了多个功能），经过测试以后，觉得没问题，就可以请求管理员把自己仓库的develop分支合并到源仓库的develop分支中，这就是传说中的pull request。
+
+![PingHackers_push_pr](https://raw.githubusercontent.com/livoras/blog-images/master/git/git-demo-pull-request.png)
+
+点击上图的绿色按钮，开发者就可以就可以静静地等待管理员对你的提交的评审了。
+
+![PingHackers_push_pr2](https://raw.githubusercontent.com/livoras/blog-images/master/git/git-demo-pull-request-origin.png)
+
+### 6. 管理员测试、合并 (自动测试或开发者自己测试代码)
+
+接下来就是管理员的操作了，作为管理员的PingHackers登陆github，便看到了我对源仓库发起的pull request。
+
+![PingHackers_mg](https://raw.githubusercontent.com/livoras/blog-images/master/git/pull-request-origin.png)
+
+这时候PingHackers需要做的事情就是：
+
+  1. **对我的代码进行review**。github提供非常强大的代码review功能：
+  ![review](https://raw.githubusercontent.com/livoras/blog-images/master/git/git-demo-review.png)
+
+  2. **review没有问题**, 即可合并至 `master` 或 `develop` 分支
+
+---
 
 # 定制化 git 全局配置
 
@@ -486,11 +522,6 @@ vagrant@vagrant-ubuntu-trusty:~/workspace/eleme_project$
 ----------
 
 
-# 其他
-
-- [GitHub秘籍](https://snowdream86.gitbooks.io/github-cheat-sheet/content/zh/index.html)
-
----
 
 # 如何在 git 中写出好的 commit 说明
 
@@ -590,6 +621,19 @@ being redirected to the login form.
 * Store requested path in a session variable
 * Redirect to the stored location after successfully logging in the user
 ```
+
+---
+
+# 其他
+
+- [GitHub秘籍](https://snowdream86.gitbooks.io/github-cheat-sheet/content/zh/index.html)
+
+---
+
+## 引用
+
+- [moooofly blog](https://github.com/moooofly/MarkSomethingDown/blob/master/nonsense/git%20%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF.md)
+- [livoras blog](https://github.com/livoras/blog/issues/7)
 
 ## 参考
 
