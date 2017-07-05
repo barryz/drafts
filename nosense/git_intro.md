@@ -678,7 +678,7 @@ being redirected to the login form.
 
 - [moooofly blog](https://github.com/moooofly/MarkSomethingDown/blob/master/nonsense/git%20%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF.md)
 - [livoras blog](https://github.com/livoras/blog/issues/7)
-- [码农明明桑]http://blog.isming.me/2014/09/26/git-rebase-merge/)
+- [码农明明桑](http://blog.isming.me/2014/09/26/git-rebase-merge/)
 
 ## 参考
 
