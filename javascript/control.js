@@ -69,3 +69,17 @@ myArray = ['cat', 'dog', 'ear', 'eye'];
 for (let i of myArray) {
     console.log("array element: " + i);
 }
+
+// for statement  js for loop is same as that in C and JAVA  
+for (let i = 0; i < 100; i++) {
+    if (i % 5==0) {
+        console.log("catch: " + i);
+    }
+}
+
+// forEach statement,  in ES5 ES6 ...
+let myArray1 = [1, 3, 5, 7, 9]
+myArray1.forEach((v,i) => {myArray1.push(v + i)});
+console.log(myArray1);
+
+
