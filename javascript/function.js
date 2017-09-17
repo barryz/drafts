@@ -36,6 +36,26 @@ console.log(nums.map(v => v + 1)); //Arrow function
 console.log(nums.map((v, i) => v + i)); //pass index to params
 
 
-// default parammeters
-//...
+// Arguments
+// default arguments
+function add() {
+    let sum = 0;
+    /*
+    arguments: an array-like object holding all of the values passed to the function. 
+    */
+    for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i]
+    }
+    return sum;
+}
+console.log(add(1, 4, 6));
 
+// rest parammeter syntax 
+function add1(...args) {
+    let sum = 0;
+    for (let x of args) {
+        sum += x;
+    }
+    return sum / args.length;
+}
+console.log(add1(1, 3, 2));
