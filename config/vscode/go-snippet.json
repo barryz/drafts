@@ -1,43 +1,40 @@
 {
-/*
-	// Place your snippets for Go here. Each snippet is defined under a snippet name and has a prefix, body and
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
-	// same ids are connected.
-	// Example:
-	"Print to console": {
-		"prefix": "log",
-		"body": [
-			"console.log('$1');",
-			"$2"
-		],
-		"description": "Log output to console"
-	}
-*/
 	"Err handle snippet": {
-		"prefix": "ife",
+		"prefix": "ie",
 		"body": [
 			"if err != nil {",
-			"",
+			"\t$0",
 			"}"
 		],
 		"description": "err handler"
 	},
 	"Method snippet": {
-		"prefix": "fn",
+		"prefix": "fr",
 		"body": [
-			"// ",
-			"func (r *reciver) functionName() error {",
+			"// ${1:} ",
+			"func (r *reciver) ${1:}() error {",
+			"\t",
 			"\treturn nil",
 			"}"
 		],
 		"description": "create a method function"
 	},
+	"Func snippet": {
+		"prefix": "fn",
+		"body": [
+			"// ${1:} ",
+			"func ${1:}() error {",
+			"\t",
+			"\treturn nil",
+			"}"
+		],
+		"description": "create a normal function"
+	},
 	"Json Unmarshal snippet": {
 		"prefix": "ju",
 		"body": [
 			"if err := json.Unmarshal([]byte(), &t); err != nil {",
-			"",
+			"\t$0",
 			"}"
 		],
 		"description": "json unmarshal"
@@ -47,7 +44,7 @@
 		"body": [
 			"bs, err := json.Marshal(payload)",
 			"if err != nil {",
-			"",
+			"\t$0",
 			"}"
 		],
 		"description": "json Marshal"
@@ -55,8 +52,8 @@
 	"Iterate Slice": {
 		"prefix": "frs",
 		"body": [
-			"for _, i := range Slice {",
-			"",
+			"for _, ${1:v} := range slice {",
+			"\t$0",
 			"}"
 		],
 		"description": "iterate a slice"
@@ -64,8 +61,8 @@
 	"Iterate Map": {
 		"prefix": "frm",
 		"body": [
-			"for k, v := range Map {",
-			"",
+			"for ${1:k}, ${2:v} := range Map {",
+			"\t$0",
 			"}"
 		],
 		"description": "iterate a map"
@@ -74,7 +71,7 @@
 		"prefix": "gf",
 		"body": [
 			"go func() {",
-			"",
+			"\t$0",
 			"}()"
 		],
 		"description": "generate a goroutine func"
@@ -82,9 +79,9 @@
 	"type struct": {
 		"prefix": "ts",
 		"body": [
-			"//",
-			"type Type struct {",
-			"",
+			"// ${0:}",
+			"type ${0:} struct {",
+			"\t",
 			"}"
 		],
 		"description": "generate a struct define snippet"
@@ -92,14 +89,14 @@
 	"json tags": {
 		"prefix": "jt",
 		"body": [
-				"`json:\"field\"`"
+			"`json:\"field\"`"
 		],
 		"description": "add a json tag"
 	},
 	"yaml tags": {
 		"prefix": "yt",
 		"body": [
-				"`yaml:\"field\"`"
+			"`yaml:\"field\"`"
 		],
 		"description": "add a yaml tag"
 	}
