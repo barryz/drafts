@@ -39,6 +39,150 @@
 		],
 		"description": "json unmarshal"
 	},
+	"Yaml Unmarshal snippet": {
+		"prefix": "yu",
+		"body": [
+			"if err := yaml.Unmarshal([]byte(), &t); err != nil {",
+			"\t$0",
+			"}"
+		],
+		"description": "yaml unmarshal"
+	},
+
+	"Json Marshal snippet": {
+		"prefix": "jm",
+		"body": [
+			"bs, err := json.Marshal(payload)",
+			"if err != nil {",
+			"\t$0",
+			"}"
+		],
+		"description": "json Marshal"
+	},
+	"Iterate Slice": {
+		"prefix": "frs",
+		"body": [
+			"for _, ${1:v} := range slice {",
+			"\t$0",
+			"}"
+		],
+		"description": "iterate a slice"
+	},
+	"Iterate Map": {
+		"prefix": "frm",
+		"body": [
+			"for ${1:k}, ${2:v} := range Map {",
+			"\t$0",
+			"}"
+		],
+		"description": "iterate a map"
+	},
+	"go func": {
+		"prefix": "gf",
+		"body": [
+			"go func() {",
+			"\t$0",
+			"}()"
+		],
+		"description": "generate a goroutine func"
+	},
+	"defer func": {
+		"prefix": "df",
+		"body": [
+			"defer func() {",
+			"\t$0",
+			"}()"
+		],
+		"description": "generate a defer func"
+	},
+	"type struct": {
+		"prefix": "ts",
+		"body": [
+			"// ${0:}",
+			"type ${0:} struct {",
+			"\t",
+			"}"
+		],
+		"description": "generate a struct define snippet"
+	},
+	"type struct private": {
+		"prefix": "tsp",
+		"body": [
+			"type ${0:} struct {",
+			"\t",
+			"}"
+		],
+		"description": "generate a struct define snippet"
+	},
+	"json tags": {
+		"prefix": "jt",
+		"body": [
+			"${1:} \tstring \t`json:\"${1:}\"`"
+		],
+		"description": "add a field in structure with a json tag"
+	},
+	"json omitempty tags": {
+		"prefix": "jte",
+		"body": [
+			"${1:} \tstring \t`json:\"${1:},omitempty\"`"
+		],
+		"description": "add a field in structure with a json tag that has omitempty property"
+	},
+	"yaml tags": {
+		"prefix": "yt",
+		"body": [
+			"${1:} \tstring \t`yaml:\"${1:}\"`"
+		],
+		"description": "add a field in structure with a yaml tag"
+	},
+	"yaml omitempty tags": {
+		"prefix": "yte",
+		"body": [
+			"${1:} \tstring \t`yaml:\"${1:},omitempty\"`"
+		],
+		"description": "add a field in structure with a yaml tag that has omitempty property"
+	}
+}{
+	"Err handle snippet": {
+		"prefix": "ie",
+		"body": [
+			"if err != nil {",
+			"\t$0",
+			"}"
+		],
+		"description": "err handler"
+	},
+	"Method snippet": {
+		"prefix": "fr",
+		"body": [
+			"// ${1:} ",
+			"func (r *reciver) ${1:}() error {",
+			"\t",
+			"\treturn nil",
+			"}"
+		],
+		"description": "create a method function"
+	},
+	"Func snippet": {
+		"prefix": "fn",
+		"body": [
+			"// ${1:} ",
+			"func ${1:}() error {",
+			"\t",
+			"\treturn nil",
+			"}"
+		],
+		"description": "create a normal function"
+	},
+	"Json Unmarshal snippet": {
+		"prefix": "ju",
+		"body": [
+			"if err := json.Unmarshal([]byte(), &t); err != nil {",
+			"\t$0",
+			"}"
+		],
+		"description": "json unmarshal"
+	},
 	"Json Marshal snippet": {
 		"prefix": "jm",
 		"body": [
