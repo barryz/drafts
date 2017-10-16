@@ -140,5 +140,15 @@
 			"${1:} \tstring \t`yaml:\"${1:},omitempty\"`"
 		],
 		"description": "add a field in structure with a yaml tag that has omitempty property"
-	}
+	},
+    "head line copyright": {
+        "prefix": "he",
+        "body": [
+            "// Copyright 2017 Eleme Inc. All rights reserved.",
+            "",
+            "",
+            "package $0"
+        ],
+        "description": "add a eleme copyright headline with new golang file."
+    }
 }
