@@ -9,7 +9,7 @@
 
 # Git Tips
 
-**墙裂不建议 `git push` 的时候使用 `-f` 强制推送！！！**
+**不建议 `git push` 的时候使用 `-f` 强制推送！！！**
 
 ### git clone 时直接 rename
 
@@ -73,6 +73,19 @@ git reset --hard $commit_id
 ```bash
 git reset --hard HEAD^
 ```
+
+### 回退当前repo HEAD指向至指定的commit，repo内容不回退
+
+```bash
+git reset --soft $commit_id
+```
+
+### 回退当前repo到上次提交commit, repo内容不回退
+
+```bash
+git reset --soft HEAD^
+```
+
 
 ### diff当前commit与指定commit
 
