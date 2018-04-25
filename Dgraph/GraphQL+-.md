@@ -1,6 +1,6 @@
 ### 0x01 HelloWorld(简单查询)
 
-```json
+```js
 {
     find_someone(func: eq(name, "SomeOne's name")) {
         uid
@@ -14,7 +14,7 @@
 上面的查询语句表示, 新建一个名为 `find_someone` 的query, 查询条件为集合内name等于 `SomeOne's name`的实体, 并返回 uid, name, age, sex 字段。
 其中 `uid` 是 dgraph 内部的用来标识entity的唯一identify, 是一个16进制的数. 也可以通过`uid` 来查询某个entity:
 
-```json
+```js
 {
     find_someone(func: uid(0x6)) {
         name
@@ -30,7 +30,7 @@
 
 可以查询某entity和另外的entity的关系(edge)
 
-```json
+```js
 {
     find_someone(func: eq(name, "Michael")) {
         name
@@ -53,7 +53,7 @@
 
 Response:
 
-```json
+```js
 {
   "data": {
     "find_someone": [
@@ -104,14 +104,14 @@ Response:
 
 Dgraph中可用的数据类型有:
 
-`int`	    signed 64 bit integer
-`float`	    double precision floating point number
-`string`    string
-`bool`	    boolean
-`id`	    ID’s stored as strings
-`dateTime`	RFC3339 time format with optional timezone eg:        2006-01-02T15:04:05.999999999+10:00 or 2006-01-02T15:04:05.999999999
-`geo`	    geometries stored using go-geom
-`uid`       uid
+- `int`	    signed 64 bit integer
+- `float`	    double precision floating point number
+- `string`    string
+- `bool`	    boolean
+- `id`	    ID’s stored as strings
+- `dateTime`	RFC3339 time format with optional timezone eg:        2006-01-02T15:04:05.999999999+10:00 or 2006-01-02T15:04:05.999999999
+- `geo`	    geometries stored using go-geom
+- `uid`       uid
 
 ### 0x04 多语言支持
 Dgraph支持UTF-8编码的字符串文本查询.
@@ -120,7 +120,7 @@ Dgraph支持UTF-8编码的字符串文本查询.
 
 比如:
 
-```json
+```js
     "Lily"@en # 表示以英文存储
     "अमित"@hi # 表示以菲律宾语存储
     "상현"@ko  # 表示以韩文存储
