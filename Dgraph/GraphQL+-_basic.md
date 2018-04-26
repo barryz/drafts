@@ -142,8 +142,8 @@ Query可以通过以哪种语言搜索以及以哪种语言返回来搜索带Tag
 
 下列是一些常用的过滤函数:
 
-- `allOfTerms(edge_name, "term1 ... termN")`： 
-- `anyOfTerms(edge_name, "term1 ... termN")`： 
+- `allOfTerms(edge_name, "term1 ... termN")`： 以任何顺序匹配符合所有指定模式的字符串;不区分大小写
+- `anyOfTerms(edge_name, "term1 ... termN")`： 以任何顺序匹配符合任何指定模式的字符串;不区分大小写
 
 - 等值或不等值查询过滤, 可以用来比较的类型有: `int`, `float`, `string`和 `date`.
 
