@@ -47,7 +47,7 @@ Bisecting: 30 revisions left to test after this
 [b047b02ea83310a70fd603dc8cd7a6cd13d15c04] testing xxxx
 ```
 
-以这样的二分查找方式，进行bug寻找，会比较搞笑。 等最终找bug所在的提交之后， 可以通过 **reset** 命令恢复到最初状态：
+以这样的二分查找方式，进行bug寻找，会比较高效。 等最终找bug所在的提交之后， 可以通过 **reset** 命令恢复到最初状态：
 
 ```bash
 $git bisect reset
