@@ -170,7 +170,7 @@ func main() {
 }
 ```
 
-如果涉及到`[unsafe pointer](https://go101.org/article/unsafe.html)`， 则经常需要`runtime.KeepAlive`函数调用。
+如果涉及到[unsafe pointer](https://go101.org/article/unsafe.html)， 则经常需要`runtime.KeepAlive`函数调用。
 
 ## 什么时候收集内存块？
 
